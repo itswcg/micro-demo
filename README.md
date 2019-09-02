@@ -28,10 +28,13 @@ In the event you need a resilient multi-host setup we recommend consul.
 
 ```
 # install consul
-brew install consul
+wget https://releases.hashicorp.com/consul/1.6.0/consul_1.6.0_linux_amd64.zip
+unzip consul_1.6.0_linux_amd64.zip
+cp consul /usr/bin
+# server and client
+consul agent -dev -config-dir /etc/consul.d
+# client
 
-# run consul
-consul agent -dev
 ```
 
 ## Usage
@@ -52,4 +55,32 @@ Run the service
 Build a docker image
 ```
 make docker
+```
+
+## Micro command
+```
+# 所有服务
+micro list services
+# 单个服务
+micro get service
+# 调用服务 
+micro call
+# 执行api
+micro api
+# 交互
+micro cli
+> micro health
+> micro register service
+> micro deregister service
+# 代理
+micro proxy
+```
+
+package
+```
+# 本地打包
+go build -i -o micro ./main.go ./plugins.go
+
+# 打包成docker镜像
+CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-w' -i -o micro ./main.go ./plugins.go
 ```
