@@ -84,3 +84,11 @@ go build -i -o micro ./main.go ./plugins.go
 # 打包成docker镜像
 CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-w' -i -o micro ./main.go ./plugins.go
 ```
+
+```
+go get -u google.golang.org/grpc
+go get -u github.com/golang/protobuf/protoc-gen-go
+
+https://yinzige.com/2018/05/10/microservices-part-1-introduction-and-consignment-service/
+http://www.ruanyifeng.com/blog/2016/07/google-monolithic-source-repository.html
+```
