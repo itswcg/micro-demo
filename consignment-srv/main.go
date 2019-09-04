@@ -3,14 +3,10 @@ package main
 import (
 	"context"
 	pb "github.com/itswcg/micro-demo/consignment-srv/proto/consignment"
+	vesselPb "github.com/itswcg/micro-demo/vessel-srv/proto/vessel"
 	"github.com/micro/go-micro"
 	"log"
 )
-
-type IRepository interface {
-	Create(consignment *pb.Consignment) (*pb.Consignment, error)
-	GetAll() []*pb.Consignment
-}
 
 type Repository struct {
 	consignments []*pb.Consignment
@@ -27,25 +23,39 @@ func (repo *Repository) GetAll() []*pb.Consignment {
 }
 
 type service struct {
-	repo Repository
+	repo         Repository
+	vesselClient vesselPb.VesselService
 }
 
 func (s *service) CreateConsignment(ctx context.Context, req *pb.Consignment, resp *pb.Response) error {
+	vReq := &vesselPb.Specification{
+		Capacity:  int32(len(req.Containers)),
+		MaxWeight: req.Weight,
+	}
+
+	vResp, err := s.vesselClient.FindAvailable(context.Background(), vReq)
+	if err != nil {
+		return err
+	}
+
+	log.Printf("found vessel: %s\n", vResp.Vessel.Name)
+	req.VesselId = vResp.Vessel.Id
 	consignment, err := s.repo.Create(req)
 	if err != nil {
 		return err
 	}
 
-	resp = &pb.Response{}
 	resp.Created = true
 	resp.Consignment = consignment
+
 	return nil
 }
 
 func (s *service) GetConsignments(ctx context.Context, req *pb.GetRequest, resp *pb.Response) error {
 	consignments := s.repo.GetAll()
-	resp = &pb.Response{}
+
 	resp.Consignments = consignments
+	//log.Println(resp)
 	return nil
 }
 
@@ -57,7 +67,8 @@ func main() {
 
 	server.Init()
 	repo := Repository{}
-	_ = pb.RegisterShippingServiceHandler(server.Server(), &service{repo})
+	vClient := vesselPb.NewVesselService("go.micro.srv.vessel", server.Client())
+	_ = pb.RegisterShippingServiceHandler(server.Server(), &service{repo, vClient})
 	if err := server.Run(); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
