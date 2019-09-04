@@ -13,7 +13,9 @@ require (
 	github.com/hashicorp/consul/api v1.2.0 // indirect
 	github.com/hashicorp/go-retryablehttp v0.6.2 // indirect
 	github.com/mattn/go-isatty v0.0.9 // indirect
-	github.com/micro/micro v1.9.1 // indirect
+	github.com/micro/go-micro v1.9.1
+	github.com/micro/micro v1.9.1
+	github.com/micro/protoc-gen-micro v0.8.0 // indirect
 	github.com/miekg/dns v1.1.16 // indirect
 	github.com/nlopes/slack v0.6.0 // indirect
 	github.com/onsi/ginkgo v1.10.1 // indirect

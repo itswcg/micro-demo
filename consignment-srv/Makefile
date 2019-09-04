@@ -3,12 +3,12 @@ GOPATH:=$(shell go env GOPATH)
 .PHONY: proto
 proto:
 
-	protoc -I. --go_out=plugins=grpc:$(GOPATH)/src/github.com/itswcg/micro-demo/consignment-srv \
-    proto/consignment/consignment.proto
+	protoc --proto_path=. --micro_out=. --go_out=. proto/consignment/consignment.proto
 
 .PHONY: build
 build:
 
+	CGO_ENABLED=0 GOOS=linux go build
 	docker build -t consignment-srv .
 
 .PHONY: run

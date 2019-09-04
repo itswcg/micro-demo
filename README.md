@@ -91,4 +91,10 @@ go get -u github.com/golang/protobuf/protoc-gen-go
 
 https://yinzige.com/2018/05/10/microservices-part-1-introduction-and-consignment-service/
 http://www.ruanyifeng.com/blog/2016/07/google-monolithic-source-repository.html
+
+protoc --proto_path=. --micro_out=. --go_out=. proto/consignment/consignment.proto
+--proto_path= -I 表示指定搜索的目录
+--micro_out=输出目录
+--go_out=输出目录
+表示所在proto文件
 ```
