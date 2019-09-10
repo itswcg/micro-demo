@@ -5,6 +5,8 @@ package go.micro.srv.vessel;
 service VesselService {
     rpc FindAvailable (Specification) returns (Response) {
     }
+    rpc Create (Vessel) returns (Response) {
+    }
 }
 
 // 每条货轮的属性
@@ -27,4 +29,5 @@ message Specification {
 message Response {
     Vessel vessel = 1;
     repeated Vessel vessels = 2;
+    bool created = 3;
 }
