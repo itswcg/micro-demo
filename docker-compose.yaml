@@ -7,6 +7,12 @@ services:
     environment:
       MICRO_REGISTRY: "mdns"
 
+  user-cli:
+    build:
+      ./user-cli
+    environment:
+      MICRO_REGISTRY: "mdns"
+
   consignment-srv:
     build:
       ./consignment-srv
@@ -15,7 +21,6 @@ services:
     environment:
       MICRO_ADRESS: ":50051"
       MICRO_REGISTRY: "mdns"
-      DB_HOST: "datastore:27017"
 
   vessel-srv:
     build:
@@ -25,3 +30,9 @@ services:
     environment:
       MICRO_ADRESS: ":50051"
       MICRO_REGISTRY: "mdns"
+
+  user-srv:
+    build:
+      ./user-srv
+    ports:
+      - 50053:50051
