@@ -12,8 +12,9 @@ require (
 	github.com/gorilla/websocket v1.4.1 // indirect
 	github.com/hashicorp/consul/api v1.2.0 // indirect
 	github.com/hashicorp/go-retryablehttp v0.6.2 // indirect
-	github.com/jinzhu/gorm v1.9.10 // indirect
+	github.com/jinzhu/gorm v1.9.10
 	github.com/mattn/go-isatty v0.0.9 // indirect
+	github.com/micro/cli v0.2.0
 	github.com/micro/go-micro v1.9.1
 	github.com/micro/micro v1.9.1
 	github.com/micro/protoc-gen-micro v0.8.0 // indirect
@@ -24,7 +25,7 @@ require (
 	github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4 // indirect
 	github.com/prometheus/procfs v0.0.4 // indirect
 	github.com/rogpeppe/go-internal v1.3.1 // indirect
-	github.com/satori/go.uuid v1.2.0 // indirect
+	github.com/satori/go.uuid v1.2.0
 	github.com/stretchr/testify v1.4.0 // indirect
 	go.etcd.io/etcd v3.3.15+incompatible // indirect
 	golang.org/x/crypto v0.0.0-20190829043050-9756ffdc2472 // indirect
@@ -39,5 +40,5 @@ require (
 	google.golang.org/genproto v0.0.0-20190819201941-24fa4b261c55 // indirect
 	google.golang.org/grpc v1.23.0
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
-	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22 // indirect
+	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
 )

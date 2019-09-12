@@ -10,9 +10,9 @@ import (
 const (
 	user     = ""
 	password = ""
-	host     = ""
-	port     = ""
-	dbName   = ""
+	host     = "212.64.50.167"
+	port     = "2223"
+	dbName   = "demo"
 )
 
 func main() {
