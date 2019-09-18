@@ -6,13 +6,11 @@ import (
 	"github.com/micro/cli"
 	"github.com/micro/go-micro"
 	microclient "github.com/micro/go-micro/client"
-	"github.com/micro/micro/cmd"
 	"log"
 	"os"
 )
 
 func main() {
-	cmd.Init()
 
 	client := pb.NewUserService("go.micro.srv.user", microclient.DefaultClient)
 
