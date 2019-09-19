@@ -6,6 +6,7 @@ require (
 	cloud.google.com/go v0.44.3 // indirect
 	github.com/containerd/continuity v0.0.0-20190827140505-75bee3e2ccb6 // indirect
 	github.com/coreos/etcd v3.3.15+incompatible // indirect
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/fsouza/go-dockerclient v1.4.4 // indirect
 	github.com/gogo/protobuf v1.3.0 // indirect
 	github.com/golang/protobuf v1.3.2
